@@ -1,21 +1,21 @@
 function add(a, b) {
-    return a + b;
+    return parseFloat(a) + parseFloat(b);
 }
 
 function minus(a, b) {
-    return a - b;
+    return parseFloat(a) - parseFloat(b);
 }
 
 function multiply(a, b) {
-    return a * b;
+    return parseFloat(a) * parseFloat(b);
 }
 
 function divide(a, b) {
-    return a / b;
+    return parseFloat(a) / parseFloat(b);
 }
 
 function mod(a, b) {
-    return a % b;
+    return parseFloat(a) % parseFloat(b);
 }
 
 function clear() {
@@ -35,6 +35,21 @@ function calculate(value1, value2) {
             break;
         case "-":
             result = minus(value1, value2);
+            display.textContent = result;
+            clear();
+            break;
+        case "x":
+            result = multiply(value1, value2);
+            display.textContent = result;
+            clear();
+            break;
+        case "/":
+            result = divide(value1, value2);
+            display.textContent = result;
+            clear();
+            break;
+        case "%":
+            result = multiply(value1, value2);
             display.textContent = result;
             clear();
             break;
