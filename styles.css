@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Zain, serif;
+    background-color: #53364c;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+    background-color: #6a6a6a;
+    border: 2px solid rgba(46, 27, 48, .2);
+    border-radius: 30px;
+    margin-top: 30px;
+    box-shadow: 5px 5px 5px #2e1b30;
+}
+
+#background, #white, #opacity {
+    width: 290px;
+    height: 100px;
+    border-radius: 30px;
+    display: flex;
+}
+
+#white {
+    background-color: white;
+    position: absolute;
+    z-index: 0;
+}
+
+#opacity {
+    background-color: #00eeff;
+    position: absolute;
+    opacity: 15%;
+    z-index: 1;
+}
+
+#background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#background #calculations {
+    height: 20px;
+    width: 260px;
+    font-size: 22px;
+    z-index: 2;
+    text-align: right;
+    
+}
+
+#background #display {
+    height: 65px;
+    width: 260px;
+    z-index: 2;
+    text-align: right;
+    font-size: 60px;
+}
+
+.row {
+    display: flex;
+    justify-content: baseline;
+    gap: 18px;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #ac5db4;
+    border-radius: 32px;
+    margin: 9px 0px;
+    background-color: #ac5db4;
+    color: white;
+    font-size: 26px;
+    box-shadow: 0px 5px 0px #4d2b51;
+}
+
+button:active {
+    background-color: #9e56a7;
+    border: 1px solid #9e56a7;
+}
+
+#equal {
+    width: 140px;
+}
