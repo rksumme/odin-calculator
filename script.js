@@ -11,7 +11,12 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return parseFloat(a) / parseFloat(b);
+    if (parseFloat(b) === 0) {
+        result = "Nice try, pal";
+    } else {
+        result = parseFloat(a) / parseFloat(b);
+    }
+    return result;
 }
 
 function mod(a, b) {
