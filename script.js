@@ -139,6 +139,22 @@ buttons.forEach(button => {
             clear();
             display.textContent = "";
             calculations.textContent = "";
+        } else if (button.classList.contains("delete")) {
+            if (num1 != null && operator === null && num2 === null) {
+                num1 = num1.substring(0,num1.length - 1);
+                display.textContent = num1;
+                calculations.textContent = num1;
+            } else if (num1 !=null && operator != null && num2 === null) {
+                operator === null;
+                equation = equation.substring(0, equation.length - 2);
+                display.textContent = num1;
+                calculations.textContent = num1;
+            } else {
+                num2 = num2.substring(0, num2.length - 1);
+                equation = equation.substring(0, equation.length - 1);
+                display.textContent = num2;
+                calculations.textContent = equation;
+            }
         }
     });
 })
