@@ -29,6 +29,7 @@ function clear() {
     num2 = null;
     result = null;
     waitingNum2 = false;
+    equation = null;
 }
 
 function calculate(value1, value2) {
@@ -54,7 +55,7 @@ function calculate(value1, value2) {
             clear();
             break;
         case "%":
-            result = multiply(value1, value2);
+            result = mod(value1, value2);
             display.textContent = result;
             clear();
             break;
@@ -62,39 +63,75 @@ function calculate(value1, value2) {
 }
 
 let num1 = null;
+let waitingOperator = false;
 let operator = null;
 let num2 = null;
 let result = null;
 let waitingNum2 = false;
+let equation = null;
 
 let buttons = document.querySelectorAll("button");
 let display = document.querySelector("#display");
+let calculations = document.querySelector("#calculations");
 
 
 buttons.forEach(button => {
     button.addEventListener("click", function() {
-        if (button.classList.contains("num")) {
+        if (button.classList.contains("num") || button.classList.contains("decimal")) {
             if (!waitingNum2) {
-                num1 = button.value;
-                display.textContent = num1;
-                console.log(num1);
+                if (num1 === null) {
+                    num1 = button.value;
+                    equation = button.value;
+                    display.textContent = num1;
+                    calculations.textContent = equation;
+                    console.log(num1);
+                } else if (num1.length <= 8){
+                    num1 += button.value;
+                    equation += button.value;
+                    parseFloat(num1);
+                    display.textContent = num1;
+                    calculations.textContent = num1;
+                } else {
+                    num1 = num1;
+                }
+                
             } else {
-                num2 = button.value;
-                display.textContent = num2;
-                console.log(num2);
+                if (num2 === null) {
+                    num2 = button.value;
+                    equation = equation + " " + button.value;
+                    display.textContent = num2;
+                    calculations.textContent = equation;
+                    console.log(num2);
+                } else if (num2.length <= 8) {
+                    num2 += button.value;
+                    equation += button.value;
+                    parseFloat(num2);
+                    display.textContent = num2;
+                    calculations.textContent = equation;
+                } else {
+                    num2 = num2;
+                }
             } 
+            
         } else if (button.classList.contains("operator")) {
             operator = button.value;
+            equation = equation + " " + button.value;
             waitingNum2 = true;
             display.textContent = operator;
+            calculations.textContent = equation;
         } else if (button.classList.contains("equal")) {
             if (num1 != null && num2 != null) {
+                calculations.textContent = equation + " " + "=";
                 calculate(num1, num2);
                 console.log(result);
             } else {
                 display.textContent = "ERROR";
                 clear();
             };
+        } else if (button.classList.contains("clear")) {
+            clear();
+            display.textContent = "";
+            calculations.textContent = "";
         }
     });
 })
