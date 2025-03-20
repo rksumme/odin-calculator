@@ -35,22 +35,30 @@ function clear() {
 function calculate(value1, value2) {
     switch(operator) {
         case "+":
-            result = add(value1, value2);
+            if (value1.includes(".") || value2.includes(".")) {
+                result = add(value1, value2).toFixed(2);
+            } else result = add(value1, value2);
             display.textContent = result;
             clear();
             break;
         case "-":
-            result = minus(value1, value2);
+            if (value1.includes(".") || value2.includes(".")) {
+                result = minus(value1, value2).toFixed(2);
+            } else result = minus(value1, value2);
             display.textContent = result;
             clear();
             break;
         case "x":
-            result = multiply(value1, value2);
+            if (value1.includes(".") || value2.includes(".")) {
+                result = multiply(value1, value2).toFixed(2);
+            } else result = multiply(value1, value2);
             display.textContent = result;
             clear();
             break;
         case "/":
-            result = divide(value1, value2);
+            if (value1.includes(".") || value2.includes(".")) {
+                result = divide(value1, value2).toFixed(2);
+            } else result = divide(value1, value2);
             display.textContent = result;
             clear();
             break;
@@ -63,7 +71,6 @@ function calculate(value1, value2) {
 }
 
 let num1 = null;
-let waitingOperator = false;
 let operator = null;
 let num2 = null;
 let result = null;
